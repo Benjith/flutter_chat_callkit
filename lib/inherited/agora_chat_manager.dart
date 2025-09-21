@@ -350,7 +350,7 @@ class AgoraChatManager {
       attr[kExt] = ext;
     }
 
-    msg.attributes = attr;
+    msg.attributes = attr.cast<String, dynamic>();
     ChatClient.getInstance.chatManager.sendMessage(msg);
     chatLog("sendInviteMsgToCallee", msg);
   }
@@ -370,7 +370,7 @@ class AgoraChatManager {
       kCallerDevId: devId,
       kTs: ts,
     };
-    msg.attributes = attributes;
+    msg.attributes = attributes.cast<String, dynamic>();
     ChatClient.getInstance.chatManager.sendMessage(msg);
     chatLog("sendAlertMsgToCaller", msg);
   }
@@ -391,7 +391,7 @@ class AgoraChatManager {
       kTs: ts,
       kCalleeDevId: calleeDevId,
     };
-    msg.attributes = attributes;
+    msg.attributes = attributes.cast<String, dynamic>();
 
     ChatClient.getInstance.chatManager.sendMessage(msg);
     chatLog("sendConfirmRingMsgToCallee", msg);
@@ -411,7 +411,7 @@ class AgoraChatManager {
       kTs: ts,
     };
 
-    msg.attributes = attributes;
+    msg.attributes = attributes.cast<String, dynamic>();
     ChatClient.getInstance.chatManager.sendMessage(msg);
     confirmTimer = Timer.periodic(const Duration(seconds: 5), (timer) {
       timer.cancel();
@@ -437,7 +437,7 @@ class AgoraChatManager {
       kCallResult: result,
       kTs: ts,
     };
-    msg.attributes = attributes;
+    msg.attributes = attributes.cast<String, dynamic>();
     ChatClient.getInstance.chatManager.sendMessage(msg);
     chatLog("sendConfirmAnswerMsgToCallee", msg);
   }
