@@ -336,7 +336,7 @@ class AgoraChatManager {
       sType = 'video';
     }
     final msg = ChatMessage.createTxtSendMessage(
-        targetId: userId, content: 'invite info: $sType');
+        targetId: userId, content: 'Incoming call: $sType');
     Map attr = {
       kMsgType: kMsgTypeValue,
       kAction: kInviteAction,
