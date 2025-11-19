@@ -145,9 +145,12 @@ class AgoraRTCManager {
       areaCode: options?.areaCode,
     ));
     await _engine.setClientRole(role: ClientRoleType.clientRoleBroadcaster);
-    await _engine
-        .setChannelProfile(ChannelProfileType.channelProfileLiveBroadcasting);
+    // await _engine
+    //     .setChannelProfile(ChannelProfileType.channelProfileCommunication1v1);
     await _engine.setDefaultAudioRouteToSpeakerphone(true);
+    await _engine.setAudioProfile(
+        profile: AudioProfileType.audioProfileMusicHighQuality,
+        scenario: AudioScenarioType.audioScenarioChatroom);
     _engine.unregisterEventHandler(_handler!);
     _engine.registerEventHandler(_handler!);
   }
@@ -179,7 +182,10 @@ class AgoraRTCManager {
         token: token,
         channelId: channel,
         uid: uid,
-        options: const ChannelMediaOptions(),
+        options: const ChannelMediaOptions(
+          publishMicrophoneTrack: true,
+          autoSubscribeAudio: true,
+        ),
       );
     } catch (e) {
       handler.onError?.call(ErrorCodeType.errFailed,
