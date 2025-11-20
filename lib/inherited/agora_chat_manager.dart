@@ -91,6 +91,16 @@ class AgoraChatManager {
 
   void chatLog(String method, ChatMessage msg) {
     log("chat method: $method, ${msg.toJson().toString()}");
+
+     try {
+      final raw = msg.toJson(); // Map
+      final encoder = const JsonEncoder.withIndent('  ');
+      final pretty = encoder.convert(raw);
+
+      log("===== $tag START =====\n$pretty\n===== $tag END =====");
+    } catch (e) {
+      log("prettyChatLog ERROR: $e");
+    }
   }
 
   void onCurrentUserJoined() {
