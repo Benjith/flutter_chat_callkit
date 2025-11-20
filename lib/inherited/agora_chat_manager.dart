@@ -5,7 +5,8 @@ import 'package:agora_chat_callkit/inherited/agora_chat_call.dart';
 import 'package:agora_chat_callkit/inherited/agora_chat_call_model.dart';
 import 'package:agora_chat_callkit/inherited/tools/agora_chat_callkit_tools.dart';
 import 'package:flutter/foundation.dart';
-
+import 'dart:developer';
+import 'dart:convert';
 import 'agora_chat_call_enum.dart';
 import 'agora_chat_log_tool.dart';
 
@@ -97,7 +98,7 @@ class AgoraChatManager {
       final encoder = const JsonEncoder.withIndent('  ');
       final pretty = encoder.convert(raw);
 
-      log("===== $tag START =====\n$pretty\n===== $tag END =====");
+      log("===== START =====\n$pretty\n===== END =====");
     } catch (e) {
       log("prettyChatLog ERROR: $e");
     }
